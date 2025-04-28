@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-events
+  namespace: projet51
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-events
+  template:
+    metadata:
+      labels:
+        app: api-events
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+      - name: api-events
+        image: 183295424915.dkr.ecr.eu-west-3.amazonaws.com/backend:api-events-latest
+        ports:
+          - containerPort: 4000
+        env:
+          - name: PORT
+            value: "4000"
+          - name: MONGO_URI
+            value: "mongodb://admin:password123@mongo.projet51.svc.cluster.local:27017/projet51_db?authSource=admin"

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-elections
+  namespace: projet51
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-elections
+  template:
+    metadata:
+      labels:
+        app: api-elections
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+      - name: api-events
+        image: 183295424915.dkr.ecr.eu-west-3.amazonaws.com/backend:api-elections-latest
+        ports:
+          - containerPort: 4002
+        env:
+          - name: PORT
+            value: "4002"
+          - name: MONGO_URI
+            value: "mongodb://admin:password123@mongo.projet51.svc.cluster.local:27017/projet51_db?authSource=admin"
+

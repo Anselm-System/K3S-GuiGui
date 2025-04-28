@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-core
+  namespace: projet51
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-core
+  template:
+    metadata:
+      labels:
+        app: api-core
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+      - name: api-core
+        image: 183295424915.dkr.ecr.eu-west-3.amazonaws.com/backend:api-core-latest
+        ports:
+          - containerPort: 3001
+        env:
+          - name: PORT
+            value: "3001"
+          - name: MONGO_URI
+            value: "mongodb://admin:password123@mongo.projet51.svc.cluster.local:27017/projet51_db?authSource=admin"
+          - name: JWT_SECRET
+            value: "supersecretkey"
+          - name: API_EVENT_BASE_URL
+            value: "http://api-events.projet51.svc.cluster.local:4000"
+          - name: API_CLUB_BASE_URL
+            value: "http://api-clubs.projet51.svc.cluster.local:4001"
+          - name: API_ELECTION_BASE_URL
+            value: "http://api-elections.projet51.svc.cluster.local:4002"
+          - name: API_IA_BASE_URL
+            value: "http://api-ia.projet51.svc.cluster.local:4003"

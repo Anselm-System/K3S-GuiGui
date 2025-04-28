@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: projet51
+  name: front-app
+spec:
+  replicas: 1  # Nombre de pods pour la haute disponibilité
+  selector:
+    matchLabels:
+      app: front-app
+  template:
+    metadata:
+      labels:
+        app: front-app
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: front-app
+          image: 767398037598.dkr.ecr.eu-west-3.amazonaws.com/frontend:app-latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NEXT_PUBLIC_REACT_APP_URI
+              value: "https://anselmsystem.s-alx-k.com"
