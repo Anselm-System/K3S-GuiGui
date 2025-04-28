@@ -13,11 +13,9 @@ spec:
       labels:
         app: api-clubs
     spec:
-      imagePullSecrets:
-        - name: ecr-secret
       containers:
       - name: api-clubs
-        image: 183295424915.dkr.ecr.eu-west-3.amazonaws.com/backend:api-clubs-latest
+        image: guigui2515/projet51-back-api-clubs:latest
         ports:
           - containerPort: 4001
         env:
