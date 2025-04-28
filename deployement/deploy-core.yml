@@ -13,11 +13,9 @@ spec:
       labels:
         app: api-core
     spec:
-      imagePullSecrets:
-        - name: ecr-secret
       containers:
       - name: api-core
-        image: 183295424915.dkr.ecr.eu-west-3.amazonaws.com/backend:api-core-latest
+        image: guigui2515/projet51-back-api-core:latest
         ports:
           - containerPort: 3001
         env:
