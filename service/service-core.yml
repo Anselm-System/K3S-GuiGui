@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-core
+  namespace: projet51
+spec:
+  selector:
+    app: api-core
+  ports:
+    - protocol: TCP
+      port: 3001  # Port accessible depuis l'extérieur
+      targetPort: 3001  # Port interne de ton Pod `api-core`
+  type: ClusterIP
