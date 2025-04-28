@@ -13,11 +13,9 @@ spec:
       labels:
         app: front-app
     spec:
-      imagePullSecrets:
-        - name: ecr-secret
       containers:
         - name: front-app
-          image: 767398037598.dkr.ecr.eu-west-3.amazonaws.com/frontend:app-latest
+          image: guigui2515/projet51-front-app:latest
           ports:
             - containerPort: 3000
           env:
