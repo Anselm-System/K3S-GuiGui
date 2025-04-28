@@ -1,0 +1,76 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: projet51-ingress
+  namespace: projet51
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    networking.gke.io/managed-certificates: "certif-projet51"
+spec:
+  rules:
+    - host: anselmsystem.s-alx-k.com
+      http:
+        paths:
+          - path: /a
+            pathType: Prefix
+            backend:
+              service:
+                name: api-core
+                port:
+                  number: 3001
+          - path: /ia
+            pathType: Prefix
+            backend:
+              service:
+                name: api-core
+                port:
+                  number: 3001
+          - path: /club
+            pathType: Prefix
+            backend:
+              service:
+                name: api-core
+                port:
+                  number: 3001
+          - path: /event
+            pathType: Prefix
+            backend:
+              service:
+                name: api-core
+                port:
+                  number: 3001
+          - path: /election
+            pathType: Prefix
+            backend:
+              service:
+                name: api-core
+                port:
+                  number: 3001
+          - path: /user
+            pathType: Prefix
+            backend:
+              service:
+                name: api-core
+                port:
+                  number: 3001
+          - path: /profile-
+            pathType: Prefix
+            backend:
+              service:
+                name: api-core
+                port:
+                  number: 3001
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: front-app
+                port:
+                  number: 3000
+          - path: /src/
+            pathType: Prefix
+            backend:
+              service:
+                name: front-app
+                port:
+                  number: 3000
