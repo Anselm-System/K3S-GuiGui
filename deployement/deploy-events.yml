@@ -13,9 +13,11 @@ spec:
       labels:
         app: api-events
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
       - name: api-events
-        image: guigui2515/projet51-back-api-events:latest
+        image: guigui2515/projet51:back-api-events
         ports:
           - containerPort: 4000
         env:
