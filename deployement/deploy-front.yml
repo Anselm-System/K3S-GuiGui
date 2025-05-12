@@ -4,7 +4,7 @@ metadata:
   namespace: projet51
   name: front-app
 spec:
-  replicas: 1  # Nombre de pods pour la haute disponibilité
+  replicas: 1 
   selector:
     matchLabels:
       app: front-app
@@ -13,9 +13,11 @@ spec:
       labels:
         app: front-app
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: front-app
-          image: guigui2515/projet51-front-app:latest
+          image: guigui2515/projet51:front-app
           ports:
             - containerPort: 3000
           env:
