@@ -13,9 +13,11 @@ spec:
       labels:
         app: api-clubs
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
       - name: api-clubs
-        image: guigui2515/projet51-back-api-clubs:latest
+        image: guigui2515/projet51:back-api-clubs
         ports:
           - containerPort: 4001
         env:
