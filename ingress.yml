@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: projet51-ingress
+  name: traefik-ingress
   namespace: projet51
   annotations:
-    kubernetes.io/ingress.class: "gce"
-    networking.gke.io/managed-certificates: "certif-projet51"
+    kubernetes.io/ingress.class: "traefik"    
 spec:
+  ingressClassName: traefik
   rules:
     - host: anselmsystem.s-alx-k.com
       http:
