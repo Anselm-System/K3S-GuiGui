@@ -13,13 +13,15 @@ spec:
       labels:
         app: api-ia
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
       - name: api-ia
-        image: guigui2515/projet51-back-api-ia:latest
+        image: guigui2515/projet51:back-api-ia
         ports:
-          - containerPort: 4000
+          - containerPort: 4003
         env:
           - name: PORT
-            value: "4000"
+            value: "4003"
           - name: MONGO_URI
             value: "mongodb://admin:password123@mongo.projet51.svc.cluster.local:27017/projet51_db?authSource=admin"
