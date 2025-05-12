@@ -13,9 +13,11 @@ spec:
       labels:
         app: api-elections
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
-      - name: api-events
-        image: guigui2515/projet51-back-api-elections:latest
+      - name: api-elections
+        image: guigui2515/projet51:back-api-elections
         ports:
           - containerPort: 4002
         env:
