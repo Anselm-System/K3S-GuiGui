@@ -1,0 +1,33 @@
+destinations:
+  - name: grafana-cloud
+    type: prometheus
+    url: "https://prometheus-prod-58-prod-eu-central-0.grafana.net/api/prom/push"
+    auth:
+      type: basic
+      username: "2418009"
+      password: "glc_eyJvIjoiMTQyMDMxMiIsIm4iOiJzdGFjay0xMjQ2ODg2LWhtLXdyaXRlLWszcy1tZXRyaWNzLWFnZW50IiwiayI6IkxhOEhKNUJxd1FmOXo4NzZZOFptMU0wNiIsIm0iOnsiciI6InByb2QtZXUtY2VudHJhbC0wIn19"
+
+  - name: prometheus-local
+    type: prometheus
+    url: "http://prometheus-operated.monitoring.svc.cluster.local:9090/api/v1/write"
+
+
+cluster:
+  name: k3s-cluster-anselm
+
+clusterMetrics:
+  enabled: true
+
+alloy-metrics:
+  enabled: true
+  kind: DaemonSet
+
+nodeExporter:
+  enabled: true
+kubeStateMetrics:
+  enabled: true
+cadvisor:
+  enabled: true
+
+prometheusOperator:
+  enabled: true
